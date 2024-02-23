@@ -31,7 +31,7 @@ class Login : AppCompatActivity() {
                     if (task.isSuccessful) {
 
                         startActivity(
-                            Intent(this, Menu_Principal::class.java).putExtra(
+                            Intent(this, MenuPrincipal::class.java).putExtra(
                                 "nombre",
                                 "Carlos"
                             )
@@ -56,12 +56,13 @@ class Login : AppCompatActivity() {
 
     }
 
-    public override fun onStart() {
-        super.onStart()
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            Toast.makeText(this, "Ya estas autenticado", Toast.LENGTH_LONG).show()
-            startActivity(Intent(this, Menu_Principal::class.java).putExtra("nombre", "Carlos"))
-        }
-    }
+//    public override fun onStart() {
+//        super.onStart()
+//        val currentUser = auth.currentUser
+//        if (currentUser != null) {
+//            Toast.makeText(this, "Ya estas autenticado", Toast.LENGTH_LONG).show()
+//            startActivity(Intent(this, Menu_Principal::class.java).putExtra("nombre", "Carlos"))
+//        }
+//
+//    }
 }
