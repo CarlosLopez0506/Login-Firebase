@@ -10,10 +10,12 @@ import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.ListView
 import android.widget.Toast
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
@@ -91,6 +93,24 @@ class MenuPrincipal : AppCompatActivity() {
             }
 
         })
+
+        val lista = findViewById<ListView>(R.id.lista)
+
+        lista.setOnItemClickListener { parent, view, position, id ->
+            startActivity(Intent(this, Detalles::class.java)
+                .putExtra("nombre", peliculas[position].nombre)
+                .putExtra("genero", peliculas[position].genero)
+                .putExtra("anio", peliculas[position].anio)
+                .putExtra("id", peliculas[position].id)
+            )
+        }
+
+        val btnagregar = findViewById<FloatingActionButton>(R.id.botonAgregar)
+
+        btnagregar.setOnClickListener {
+            startActivity(Intent(this, AgregarPeli::class.java))
+        }
+
     }
 
     fun llenaLista() {
